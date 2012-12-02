@@ -12,7 +12,7 @@ int aes_encrypt(EVP_CIPHER_CTX* context, const unsigned char *key, const unsigne
 
     *enc_msg = (unsigned char*)malloc(msg_len + AES_BLOCK_SIZE);
 
-    EVP_EncryptInit_ex(context, EVP_aes_256_cbc(), NULL, key, iv);
+    EVP_EncryptInit(context, EVP_aes_256_cbc(), key, iv);
     
     EVP_EncryptUpdate(context, *enc_msg, (int*)&block_len, (unsigned char*)msg, msg_len);
     enc_msg_len += block_len;
@@ -29,7 +29,7 @@ int aes_decrypt(EVP_CIPHER_CTX* context, const unsigned char *key, const unsigne
 
     *dec_msg = (char*)malloc(enc_msg_len);
 
-    EVP_DecryptInit_ex(context, EVP_aes_256_cbc(), NULL, key, iv);
+    EVP_DecryptInit(context, EVP_aes_256_cbc(), key, iv);
 
     EVP_DecryptUpdate(context, (unsigned char*)*dec_msg, (int*)&block_len, enc_msg, (int)enc_msg_len);
     dec_len += block_len;
