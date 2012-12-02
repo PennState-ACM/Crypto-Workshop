@@ -1,3 +1,11 @@
+# Binary files
+bin/aes_enc
+bin/aes_dec
+
+enc.bin
+key.bin
+iv.bin
+
 # Object files
 *.o
 
